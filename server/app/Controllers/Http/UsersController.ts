@@ -20,9 +20,7 @@ export default class UsersController {
       const validation = new Validator(data, rules);
 
       if (validation.fails()) {
-        return response.badRequest({
-          message: "No  registered user found for this email",
-        });
+        return response.badRequest(validation.errors.errors);
       }
 
       let create_user = await user.create(data);

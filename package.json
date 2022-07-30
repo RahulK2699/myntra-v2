@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "@adonisjs/auth": "^8.2.1"
+    "@adonisjs/auth": "^8.2.1",
+    "phc-argon2": "^1.1.3"
   }
 }
