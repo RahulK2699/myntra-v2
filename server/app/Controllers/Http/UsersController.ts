@@ -3,7 +3,14 @@ import user from "App/Models/user";
 const Validator = require("validatorjs");
 
 export default class UsersController {
-  public async index({}: HttpContextContract) {}
+  public async index({ response }: HttpContextContract) {
+    try {
+      const user_data = await user.all();
+      response.ok({ data: user_data });
+    } catch (err) {
+      response.badRequest({ message: "Internal Server Error" });
+    }
+  }
 
   public async store({ request, response }: HttpContextContract) {
     try {
@@ -25,7 +32,7 @@ export default class UsersController {
 
       let create_user = await user.create(data);
 
-      return { create_user };
+      return response.ok({ data: create_user });
     } catch (err) {
       response.internalServerError({ message: "Internal Server Error" });
     }

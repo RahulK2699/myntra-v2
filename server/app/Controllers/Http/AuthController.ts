@@ -33,8 +33,8 @@ export default class AuthController {
         alternate_no: isUser?.alternate_no,
         token,
       };
-      console.log("data", data);
-      return data;
+      //console.log("data", data);
+      return response.ok({ data });
     } catch (err) {
       console.log(err);
       return response.internalServerError({ message: "Internal Server Error" });
