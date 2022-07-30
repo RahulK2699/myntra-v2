@@ -7,3 +7,4 @@ Route.get("/", async () => {
 Route.resource("category", "CategoriesController");
 Route.resource("user", "UsersController");
 Route.resource("product", "ProductsController");
+Route.post("login", "AuthController.login");

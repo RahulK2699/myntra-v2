@@ -21,13 +21,6 @@ export default class user extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime;
 
-  @beforeSave()
-  public static async hashPassword(user: user) {
-    if (user.$dirty.password) {
-      user.password = await Hash.make(user.password);
-    }
-  }
-
   @column()
   public mob_no: String;
 
@@ -39,4 +32,11 @@ export default class user extends BaseModel {
 
   @column()
   public alternate_no: String;
+
+  @beforeSave()
+  public static async hashPassword(user: user) {
+    if (user.$dirty.password) {
+      user.password = await Hash.make(user.password);
+    }
+  }
 }
