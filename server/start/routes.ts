@@ -1,10 +1,9 @@
-
-
 import Route from "@ioc:Adonis/Core/Route";
 
-Route.get('/', async () => {
-  return { hello: 'world' }
-})
+Route.get("/", async () => {
+  return { hello: "world" };
+});
 
-Route.resource('category','CategoriesController')
+Route.resource("category", "CategoriesController");
 Route.resource("user", "UsersController");
+Route.resource("product", "ProductsController");
