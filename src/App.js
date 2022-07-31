@@ -1,5 +1,8 @@
+import Navbar from "./pages/navbar/Navbar";
 function App() {
-  return <div className="">Hello Myntra-V2</div>;
+  return <div className="">
+    <Navbar/>
+  </div>;
 }
 
 export default App;
