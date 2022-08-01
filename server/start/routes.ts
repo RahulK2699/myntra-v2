@@ -20,3 +20,7 @@ Route.resource("product", "ProductsController").middleware({
   update: ["find:Product"],
   destroy: ["find:Product"],
 });
+
+//orders
+
+Route.resource('orders','OrdersController')

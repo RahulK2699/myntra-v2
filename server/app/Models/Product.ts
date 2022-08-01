@@ -1,5 +1,10 @@
 import { DateTime } from "luxon";
-import { BaseModel, BelongsTo, belongsTo, column } from "@ioc:Adonis/Lucid/Orm";
+import {
+  BaseModel,
+  BelongsTo,
+  belongsTo,
+  column,
+} from "@ioc:Adonis/Lucid/Orm";
 import Category from "./Category";
 
 export default class Product extends BaseModel {
@@ -40,6 +45,7 @@ export default class Product extends BaseModel {
     foreignKey: "category_id",
   })
   public category: BelongsTo<typeof Category>;
+
 
   public static async listing(request) {
     let {

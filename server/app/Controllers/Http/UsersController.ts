@@ -38,5 +38,14 @@ export default class UsersController {
     }
   }
 
- 
+  public async show({ params, response }) {
+    try {
+      let order = await user.listing(params);
+
+      if (!order) return response.notFound({ message: "No data found" });
+      return response.ok({ data: order });
+    } catch (err) {
+      return response.internalServerError({ message: "Internal server error" });
+    }
+  }
 }

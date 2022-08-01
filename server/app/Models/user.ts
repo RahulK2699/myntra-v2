@@ -1,6 +1,13 @@
 import { DateTime } from "luxon";
 import Hash from "@ioc:Adonis/Core/Hash";
-import { column, beforeSave, BaseModel } from "@ioc:Adonis/Lucid/Orm";
+import {
+  column,
+  beforeSave,
+  BaseModel,
+  hasMany,
+  HasMany,
+} from "@ioc:Adonis/Lucid/Orm";
+import Order from "./Order";
 
 export default class user extends BaseModel {
   @column({ isPrimary: true })
@@ -38,5 +45,22 @@ export default class user extends BaseModel {
     if (user.$dirty.password) {
       user.password = await Hash.make(user.password);
     }
+  }
+
+  @hasMany(() => Order, {
+    foreignKey: "user_id",
+  })
+  public order: HasMany<typeof Order>;
+
+  public static async listing(params) {
+    let id = params.id;
+    let query = this.query();
+    return query
+      .preload("order", (query) => {
+        query.preload("meta_order", (query) => {
+          query.preload("product");
+        });
+      })
+      .where("id", id);
   }
 }
