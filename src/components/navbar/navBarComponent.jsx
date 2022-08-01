@@ -8,7 +8,7 @@ import { Li } from "./Li";
 
 function NavbarComponentProps({ data }) {
   return (
-    <div className=" px-7 flex w-full gap-5 items-center justify-between shadow-md">
+    <div className=" px-7 flex w-full gap-5 items-center justify-between shadow-md relative z-10 bg-white">
       <div>
         <img className="w-12" src={myntralogo} alt="myntra" />
       </div>
@@ -17,7 +17,7 @@ function NavbarComponentProps({ data }) {
           {/* <li className="border-b-4 border-b-[#fff] hover:border-b-4 hover:border-b-btnred py-5">
             MEN
           </li> */}
-          <Li>Men</Li>
+          <Li>MEN</Li>
           <Li>WOMEN</Li>
           <Li>KIDS</Li>
           <Li>HOME & LIVING</Li>
@@ -30,7 +30,7 @@ function NavbarComponentProps({ data }) {
           <SearchIcon fontSize="medium" />
         </div>
         <input
-          className="  outline-none bg-gray-100 py-2 w-full pl-12 text-sm text-gray-400"
+          className="  outline-none  py-2 w-full pl-12 text-sm "
           type="text"
           placeholder="Search for products,brands and more"
         />

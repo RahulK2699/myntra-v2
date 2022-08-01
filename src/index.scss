@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  background-color: #fdebe9;
+}
+html {
+  font-family: sans-serif;
+}
+
+@font-face {
+  font-family: "WhitneySSM";
+  src: url("./assets/fonts/WhitneySSmMedium.ttf") format("truetype");
+}
