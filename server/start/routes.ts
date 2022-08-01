@@ -3,8 +3,20 @@ import Route from "@ioc:Adonis/Core/Route";
 Route.get("/", async () => {
   return { hello: "world" };
 });
-
-Route.resource("category", "CategoriesController");
+//users auth
 Route.resource("user", "UsersController");
-Route.resource("product", "ProductsController");
 Route.post("login", "AuthController.login");
+
+//category
+Route.resource("category", "CategoriesController").middleware({
+  show: ["find:Category"],
+  update: ["find:Category"],
+  destroy: ["find:Category"],
+});
+
+//products
+Route.resource("product", "ProductsController").middleware({
+  show: ["find:Product"],
+  update: ["find:Product"],
+  destroy: ["find:Product"],
+});
