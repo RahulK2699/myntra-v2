@@ -41,4 +41,6 @@ Server.middleware.register([
 |
 */
 Server.middleware.registerNamed({
+  find: () => import('App/Middleware/FindById'),
+  auth: () => import('App/Middleware/Auth')
 })

@@ -21,6 +21,7 @@ export default class extends BaseSchema {
         .integer("category_id")
         .unsigned()
         .references("categories.id")
+        .onDelete("cascade")
         .notNullable();
       table.timestamp("created_at");
       table.timestamp("updated_at");
