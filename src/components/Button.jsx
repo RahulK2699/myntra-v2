@@ -5,6 +5,7 @@ export default function Button({
   className = "",
   processing,
   children,
+  onClick,
 }) {
   return (
     <button
@@ -15,6 +16,7 @@ export default function Button({
         } ` + className
       }
       disabled={processing}
+      onClick={onClick}
     >
       {children}
     </button>
