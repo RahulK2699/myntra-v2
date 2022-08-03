@@ -1,7 +1,12 @@
 import React from "react";
-const Form = ({ children, className }) => {
+const Form = ({ children, className, onSubmit }) => {
   return (
-    <form className={`flex flex-col gap-4  px-7 ${className}`}>{children}</form>
+    <form
+      onSubmit={onSubmit}
+      className={`flex flex-col gap-4  px-7 ${className}`}
+    >
+      {children}
+    </form>
   );
 };
 

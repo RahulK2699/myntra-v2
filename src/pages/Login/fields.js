@@ -6,6 +6,8 @@ const signup_data = {
     email: "",
     gender: "",
     alternate_phn_no: "",
+  },
+  login_fields: {
     login_email: "",
     login_password: "",
   },
@@ -15,6 +17,8 @@ const signup_data = {
     full_name: "required|string|min:2",
     email: "required|email",
     gender: "required",
+  },
+  login_rules: {
     login_email: "required|email",
     login_password: "required|min:3",
   },

@@ -5,7 +5,7 @@ import Hash from "@ioc:Adonis/Core/Hash";
 export default class AuthController {
   public async login({ request, response, auth }: HttpContextContract) {
     try {
-      const { email, password } = request.all();
+      const { email, password } = request.body();
 
       console.log(email, password);
 
