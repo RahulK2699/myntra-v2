@@ -8,6 +8,7 @@ import {
   HasMany,
 } from "@ioc:Adonis/Lucid/Orm";
 import Order from "./Order";
+import Cart from "./Cart";
 
 export default class user extends BaseModel {
   @column({ isPrimary: true })
@@ -52,14 +53,31 @@ export default class user extends BaseModel {
   })
   public order: HasMany<typeof Order>;
 
+  @hasMany(() => Cart, {
+    foreignKey: "user_id",
+  })
+  public cart: HasMany<typeof Cart>;
+
   public static async listing(params) {
     let id = params.id;
     let query = this.query();
     return query
       .preload("order", (query) => {
+        query.orderBy("id", "desc");
         query.preload("meta_order", (query) => {
           query.preload("product");
         });
+      })
+      .where("id", id);
+  }
+
+  public static listingCart(params) {
+    let query = this.query();
+    let id = params.id;
+    return query
+      .preload("cart", (query) => {
+        query.orderBy("id", "desc");
+        query.preload("products");
       })
       .where("id", id);
   }

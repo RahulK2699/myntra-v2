@@ -24,3 +24,4 @@ Route.resource("product", "ProductsController").middleware({
 //orders
 
 Route.resource('orders','OrdersController')
+Route.resource('cart','CartsController')
