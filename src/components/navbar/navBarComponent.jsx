@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import myntralogo from "../../assets/images/myntralogo.svg";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonOutlineRoundedIcon from "@mui/icons-material/PersonOutlineRounded";
 import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
+import HoverContent from "./HoverData";
 import { Li } from "./Li";
-import { Menuhover } from "./Menuhover";
 import menuItems from "./items";
+import { AppContext } from "../../context/AppContext";
 
 function NavbarComponentProps({ data }) {
-  const [show, setShow] = useState(false);
+  const [isShowing, setIsShowing] = useState(false);
+  const { handleOpacity } = useContext(AppContext);
 
   return (
     <div className=" px-7 flex w-full gap-5 items-center justify-between shadow-md relative z-10 bg-white">
@@ -17,60 +19,49 @@ function NavbarComponentProps({ data }) {
         <img className="w-12" src={myntralogo} alt="myntra" />
       </div>
       <div className=" w-1/2 max-w-lg">
-        <ul className="  flex justify-between font-semibold text-sm">
-          {/* <li className="border-b-4 border-b-[#fff] hover:border-b-4 hover:border-b-btnred py-5">
-            MEN
-          </li> */}
+        <ul className="  flex justify-between font-semibold text-sm ">
           <Li
-            onMouseLeave={() => setShow(false)}
-            onMouseEnter={() => setShow(true)}
+            onMouseLeave={() => {
+              handleOpacity(false);
+              setIsShowing(false);
+            }}
+            onMouseEnter={() => {
+              handleOpacity(true);
+              setIsShowing(true);
+            }}
           >
             MEN
-            {show && (
-              <div
-                className="absolute top-16 left-36  transition duration-150 ease-in-out origin-top flex"
-                onMouseLeave={() => setShow(false)}
-              >
-                <div className=" flex flex-col">
-                  <Menuhover
-                    categoryName={"Topwear"}
-                    items={menuItems.topwear}
-                  />
-                  <Menuhover
-                    categoryName={"Indian & Festive Wear"}
-                    items={menuItems["Indian & Festive Wear"]}
-                  />
-                </div>
-                <div className=" flex flex-col">
-                  {" "}
-                  <Menuhover
-                    categoryName={"Bottomwear"}
-                    items={menuItems.Bottomwear}
-                  />
-                  <Menuhover
-                    categoryName={"Innerwear & Sleepwear"}
-                    items={menuItems["Innerwear & Sleepwear"]}
-                  />
-                </div>
-                <div className=" flex flex-col">
-                  {" "}
-                  <Menuhover
-                    categoryName={"Gadgets"}
-                    items={menuItems.Gadgets}
-                  />
-                  <Menuhover
-                    categoryName={"Sports & Active Wears"}
-                    items={menuItems["Sports & Active Wears"]}
-                  />
-                </div>
-              </div>
-            )}
+            {
+              <HoverContent
+                setIsShowing={setIsShowing}
+                isShowing={isShowing}
+                menuItems={menuItems}
+              />
+            }
           </Li>
-          <Li>WOMEN</Li>
+          <Li
+            onMouseLeave={() => {
+              handleOpacity(false);
+              setIsShowing(false);
+            }}
+            onMouseEnter={() => {
+              handleOpacity(true);
+              setIsShowing(true);
+            }}
+          >
+            WOMEN
+            {
+              <HoverContent
+                setIsShowing={setIsShowing}
+                isShowing={isShowing}
+                menuItems={menuItems}
+              />
+            }
+          </Li>
           <Li>KIDS</Li>
-          <Li>HOME & LIVING</Li>
-          <Li>BEAUTY</Li>
-          <Li>STUDIO</Li>
+          <Li className={" hover:border-b-yellow-500"}>HOME & LIVING</Li>
+          <Li className={" hover:border-b-green-600"}>BEAUTY</Li>
+          <Li className={""}>STUDIO</Li>
         </ul>
       </div>
       <div className=" w-2/5 max-w-md min-w-[300px] relative">

@@ -10,14 +10,15 @@ function handleClick(event) {
   console.info("You clicked a breadcrumb.");
 }
 
-export default function Breadcrumb({ items, currentPage, path }) {
+export default function Breadcrumb({ items = [], currentPage, path }) {
   const navigate = useNavigate();
   return (
     <Stack spacing={2}>
-      <Breadcrumbs separator="/" aria-label="breadcrumb">
+      <Breadcrumbs sx={{ fontSize: 12 }} separator="/" aria-label="breadcrumb">
         {items.map((el, index) => (
-          <>
+          <div key={index + 1}>
             <Link
+              className=" cursor-pointer "
               underline="hover"
               key={index + 1}
               color="inherit"
@@ -25,9 +26,13 @@ export default function Breadcrumb({ items, currentPage, path }) {
             >
               {el}
             </Link>
-          </>
+          </div>
         ))}
-        <Typography key={items.length - 1} color="text.primary">
+        <Typography
+          sx={{ fontSize: 12 }}
+          key={items.length - 1}
+          color="text.primary"
+        >
           {currentPage}
         </Typography>
         ,

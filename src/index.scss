@@ -5,6 +5,9 @@
 html {
   font-family: WhitneySSM;
 }
+body {
+  @apply bg-lightpink;
+}
 
 @font-face {
   font-family: "WhitneySSM";

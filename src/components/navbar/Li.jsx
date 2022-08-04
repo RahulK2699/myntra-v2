@@ -5,10 +5,7 @@ export const Li = ({ children, className, onMouseEnter, onMouseLeave }) => {
     <li
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      className={
-        `border-b-4 border-b-[#fff] hover:border-b-4 hover:border-b-btnred py-6 px-2 opacity-70 cursor-pointer` +
-        className
-      }
+      className={`border-b-4 border-b-[#fff] hover:border-b-4 hover:border-b-btnred py-6 px-2 opacity-70 cursor-pointer ${className}`}
     >
       {children}
     </li>

@@ -3,6 +3,7 @@ import { Home } from "./pages/Home/Home";
 import { Login } from "./pages/Login/Login";
 import Signup from "./pages/Login/Signup";
 import { PrivateRoute } from "./components/PrivateRoute";
+import { Products } from "./pages/Products/Products";
 
 function App() {
   return (
@@ -32,6 +33,15 @@ function App() {
           element={
             <PrivateRoute>
               <Home />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path="/home/products"
+          element={
+            <PrivateRoute>
+              <Products />
             </PrivateRoute>
           }
         />

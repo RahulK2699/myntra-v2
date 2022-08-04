@@ -32,7 +32,7 @@ export default class ProductsController {
       image_url: "url|required",
       brand_name: "required|string|max:50",
       type_of_shirt: "required|string|max:50",
-      price: ["required", "regex:/^(?!0\\.00)\\d{1,3}(,\\d{3})*(\\.\\d\\d)?$/"],
+      price: "required",
       rating: "required|integer|min:0",
       color: "required|string|max:15",
       discount: "string",
