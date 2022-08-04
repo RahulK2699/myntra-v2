@@ -1,7 +1,6 @@
 import type { HttpContextContract } from "@ioc:Adonis/Core/HttpContext";
 import MetaOrder from "App/Models/MetaOrder";
 import Order from "App/Models/Order";
-// import Order from "App/Models/Order";
 import Product from "App/Models/Product";
 
 import { calculate } from "../../../helpers/calculation";
@@ -19,7 +18,7 @@ export default class OrdersController {
 
   public async store({ request, response }: HttpContextContract) {
     try {
-      let user = request.body().user_id
+      let user = request.body().user_id;
       let order = new Order();
       let products = request.body().products;
       products = await Promise.all(
