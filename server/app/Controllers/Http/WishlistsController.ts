@@ -3,7 +3,7 @@ import user from "App/Models/user";
 import Wishlist from "App/Models/Wishlist";
 
 export default class WishlistsController {
-  public async index({ request, response }: HttpContextContract) {
+  public async index({ response }: HttpContextContract) {
     try {
       const data = await user.query().preload("wishlist", (query) => {
         query.preload("products");
