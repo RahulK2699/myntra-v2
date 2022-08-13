@@ -9,6 +9,7 @@ import {
 } from "@ioc:Adonis/Lucid/Orm";
 import Order from "./Order";
 import Cart from "./Cart";
+import Wishlist from "./Wishlist";
 
 export default class user extends BaseModel {
   @column({ isPrimary: true })
@@ -57,6 +58,11 @@ export default class user extends BaseModel {
     foreignKey: "user_id",
   })
   public cart: HasMany<typeof Cart>;
+
+  @hasMany(() => Wishlist, {
+    foreignKey: "user_id",
+  })
+  public wishlist: HasMany<typeof Wishlist>;
 
   public static async listing(params) {
     let id = params.id;

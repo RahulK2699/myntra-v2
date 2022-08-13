@@ -7,7 +7,7 @@ export const Menuhover = ({ categoryName, items = [], className }) => {
       <ul className=" w-44">
         <li className=" text-btnred mb-1 text-xs">{categoryName}</li>
         {items.map((e, index) => (
-          <Link to="/products">
+          <Link to="/home/products">
             {" "}
             <li
               // style={{ stroke: "#000", strokeWidth: "0.05rem" }}
